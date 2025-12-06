@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Dress Try-On</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">👗</span>
+                <span>AR Try-On</span>
+            </div>
+            <div style="font-size: 12px; color: #9ca3af;">v1.0</div>
+        </header>
+
+        <div class="viewport">
+            <video id="video" playsinline autoplay muted></video>
+            <canvas id="canvas"></canvas>
+            <div class="status">
+                <div class="status-dot"></div>
+                <span id="status-text">Ready</span>
+            </div>
+            <div class="spinner" id="spinner">
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="info-panel" id="info-panel">
+                <p><strong>Tips for best results:</strong></p>
+                <p>✓ Stand 1–2 meters away</p>
+                <p>✓ Face the camera directly</p>
+                <p>✓ Ensure good lighting</p>
+                <p>✓ Show upper body</p>
+            </div>
+            <div class="error-banner" id="error-banner"></div>
+        </div>
+
+        <footer>
+            <div class="control-section">
+                <label class="control-label">Select Outfit</label>
+                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                    <input type="file" id="outfit-upload" accept="image/png,image/jpeg" multiple style="flex: 1; cursor: pointer;">
+                    <button class="btn-secondary" id="clear-btn" style="flex: 0 0 auto; padding: 10px 14px;">Clear</button>
+                </div>
+                <div class="dress-carousel" id="dress-carousel">
+                    <button class="dress-btn active" data-id="0" title="Outfit 1"><span class="dress-btn-emoji">👗</span></button>
+                    <button class="dress-btn" data-id="1" title="Outfit 2"><span class="dress-btn-emoji">👗</span></button>
+                    <button class="dress-btn" data-id="2" title="Outfit 3"><span class="dress-btn-emoji">👗</span></button>
+                    <button class="dress-btn" data-id="3" title="Outfit 4"><span class="dress-btn-emoji">👗</span></button>
+                    <button class="dress-btn" data-id="4" title="Outfit 5"><span class="dress-btn-emoji">👗</span></button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-primary" id="start-btn">Start</button>
+                <button class="btn-secondary" id="snap-btn">Snapshot</button>
+                <button class="btn-secondary" id="help-btn" style="flex: 0 0 auto; padding: 10px 14px;">?</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
